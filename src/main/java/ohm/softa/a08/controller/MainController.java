@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
+import ohm.softa.a08.service.OpenMensaAPIService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import retrofit2.Call;
@@ -42,7 +43,7 @@ public class MainController implements Initializable {
 	 * DateFormat instance to generate required date format string for OpenMensa API
 	 */
 	private static final DateFormat openMensaDateFormat;
-
+	private OpenMensaAPIService omas;
 	private final OpenMensaAPI api;
 	private final ObservableList<Meal> meals;
 	private final Gson gson;
@@ -73,15 +74,8 @@ public class MainController implements Initializable {
 	public MainController() {
 		meals = FXCollections.observableArrayList();
 		gson = new Gson();
-
-		/* initialize Retrofit instance */
-		var retrofit = new Retrofit.Builder()
-			.addConverterFactory(GsonConverterFactory.create(gson))
-			.baseUrl("http://openmensa.org/api/v2/")
-			.build();
-
-		/* create OpenMensaAPI instance */
-		api = retrofit.create(OpenMensaAPI.class);
+		omas = OpenMensaAPIService.getInstance();
+		api = omas.getApi();
 	}
 
 	/**

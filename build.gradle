@@ -29,8 +29,8 @@ dependencies {
 }
 
 javafx {
-	sdk = '/Users/riedhammerko/Library/Java/JavaVirtualMachines/javafx-sdk-17'
-	version = 17
+	//sdk = '/Users/riedhammerko/Library/Java/JavaVirtualMachines/javafx-sdk-17'
+	version = 11
 	modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 

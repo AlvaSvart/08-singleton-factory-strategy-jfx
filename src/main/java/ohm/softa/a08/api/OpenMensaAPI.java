@@ -21,6 +21,6 @@ public interface OpenMensaAPI {
 	 * @return Retrofit Call wrapper object
 	 * @remark results in a call like this GET /canteens/265/days/2017-11-22/meals
 	 */
-	@GET("canteens/265/days/{date}/meals")
+	@GET("canteens/269/days/{date}/meals")
 	Call<List<Meal>> getMeals(@Path("date") String date);
 }
